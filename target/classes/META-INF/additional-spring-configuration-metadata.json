@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "memeber.silver",
+    "type": "java.lang.String",
+    "description": "A description for 'memeber.silver'"
+  },
+  {
+    "name": "memeber.gold",
+    "type": "java.lang.String",
+    "description": "A description for 'memeber.gold'"
+  },
+  {
+    "name": "memeber.platinum",
+    "type": "java.lang.String",
+    "description": "A description for 'memeber.platinum'"
+  },
+  {
+    "name": "ggl.files",
+    "type": "java.lang.String",
+    "description": "A description for 'ggl.files'"
+  },
+  {
+    "name": "memeber.bankName",
+    "type": "java.lang.String",
+    "description": "A description for 'memeber.bankName'"
+  },
+  {
+  	"name": "memeber.bankTransfer",
+    "type": "java.lang.String",
+    "description": "A description for 'memeber.bankTransfer'"
+  }
+]}

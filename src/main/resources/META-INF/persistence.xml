@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="ggl-pu" transaction-type="RESOURCE_LOCAL">
+		<class>com.ggl.model.UserLogin</class>
+		<class>com.ggl.model.UserDetail</class>
+		<class>com.ggl.model.BookingDetail</class>
+		<class>com.ggl.model.IndustryDetail</class>
+		<class>com.ggl.model.CountryDetail</class>
+		<class>com.ggl.model.MemberType</class>
+		<class>com.ggl.model.UserRoleType</class>
+		<class>com.ggl.model.RandamNumber</class>
+		<class>com.ggl.model.CommOverrDetail</class>
+		<class>com.ggl.model.MemberId</class>
+		<class>com.ggl.model.OrganizationList</class>
+		<class>com.ggl.model.JobSeekerDetails</class>
+		<class>com.ggl.model.EmployerLogin</class>
+		<class>com.ggl.model.EmployerDetails</class>
+		<class>com.ggl.model.CategoryDetails</class>
+		<class>com.ggl.model.PaymentDetails</class>
+		<class>com.ggl.model.WebsiteFeedBackMail</class>
+	
+	<exclude-unlisted-classes>true</exclude-unlisted-classes>
+	
+	</persistence-unit>
+</persistence>
