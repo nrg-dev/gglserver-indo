@@ -252,6 +252,7 @@ public class GglDaoImpl implements GglDao {
 				     logger.info("[DAO] Member ID ------------------>"+userdetails.getMemberID());
 				     user.setMemberNumber(userdetails.getMemberID());
 				     user.setMemberID(userdetails.getFirstname()); 
+				     user.setCountry(userdetails.getCountry());
 				    // result.add(e)
 		     
 			}
@@ -500,6 +501,7 @@ public class GglDaoImpl implements GglDao {
     			 logger.info("Commission Amount for Refer1 ----------->"+comm.getCommissionAmt());
     			 comm.setOverridingAmt(member.getRef_ovrriding1());
     			 logger.info("Overriding Amount for Refer1 ----------->"+comm.getOverridingAmt());
+    			 comm.setCountry(member.getCountry()); 
     			 comm.setCreated_date(Custom.getCurrentDate());
     			 comm.setValue_type("added");
     			 comm.setStatus("waiting");
@@ -548,6 +550,7 @@ public class GglDaoImpl implements GglDao {
 				logger.info("Commission Amount for Refer2 ----------->"+comm.getCommissionAmt());
 				comm.setOverridingAmt(member.getRef_ovrriding2());
 				logger.info("Overriding Amount for Refer2 ----------->"+comm.getOverridingAmt());
+				comm.setCountry(member.getCountry()); 
 				comm.setCreated_date(Custom.getCurrentDate());
 				comm.setValue_type("added");
 				comm.setStatus("waiting");	
@@ -589,6 +592,7 @@ public class GglDaoImpl implements GglDao {
 			    logger.info("Commission Amount for Refer3 ----------->"+comm.getCommissionAmt());
 			    comm.setOverridingAmt(member.getRef_ovrriding3());
 			    logger.info("Overriding Amount for Refer3 ----------->"+comm.getOverridingAmt());
+			    comm.setCountry(member.getCountry()); 
 			    comm.setCreated_date(Custom.getCurrentDate());
 			    comm.setValue_type("added");
 			    comm.setStatus("waiting");	
@@ -904,6 +908,7 @@ public class GglDaoImpl implements GglDao {
 					glgmember.setMemberEmail(userdetails.getEmail1());
 					glgmember.setMemberType(userdetails.getAcctType());
 					glgmember.setUsername(userdetails.getFirstname() + " " + userdetails.getLastname()); 
+					glgmember.setCountry(userdetails.getCountry()); 
 					glgmember.setCreated_date(userdetails.getAcctCreated_date()); 
 					UserLogin userlogin = entityManager.find(UserLogin.class, userdetails.getUserLogin().getUser_Login_ID());
 					glgmember.setMemberStatus(userlogin.getStatus());
@@ -947,32 +952,25 @@ public class GglDaoImpl implements GglDao {
 				glgmember = new GLGMem();
 				logger.info("getAllMemberList Test 1");
 				glgmember.setMemberStatus(resultList.get(i).getStatus());
-				logger.info("Test 2");
 				glgmember.setUserLoginPrimaryKey(resultList.get(i).getUser_Login_ID());
-				logger.info("Test 3");
 				UserDetail userdetails = entityManager.find(UserDetail.class, resultList.get(i).getUser_Login_ID());
-				logger.info("Test 4");
 				glgmember.setMemberID(userdetails.getMemberID());
-				logger.info("Test 5");
 				glgmember.setMemberName(userdetails.getFirstname());
-				logger.info("Test 6");
 				glgmember.setMemberEmail(userdetails.getEmail1());
 				glgmember.setMemberPhone(userdetails.getPhonenumber1());
-				logger.info("Test 7");
+				logger.info("Test 2");
 				glgmember.setMemberType(userdetails.getAcctType());
-				logger.info("Test 8");
+				glgmember.setCountry(userdetails.getCountry()); 
+				logger.info("Test 3");
 				glgmember.setMemberID1(userdetails.getMember_Ref_ID()); 
 				query=entityManager.createQuery("from MemberId where member_Number=?");
 				query.setParameter(1, glgmember.getMemberID());
-				logger.info("Test 9");
+				logger.info("Test 4");
 				ArrayList<MemberId> memberResult=(ArrayList<MemberId>)query.getResultList();
-				logger.info("Test 10");
 				glgmember.setMemberCommition(memberResult.get(0).getTotalCommission());
-				logger.info("Test 11");
 				glgmember.setMemberOvrriding(memberResult.get(0).getTotalOverriding());
 				myMemList.add(glgmember);
-				logger.info("Test 12");
-
+				logger.info("Test 5");
 			}
 	}
 		catch(Exception e) {
@@ -1596,6 +1594,8 @@ public class GglDaoImpl implements GglDao {
 				entityManager.merge(saveMember);
 				
 				member.setMemberNumber(userdetails.getMemberID()); 
+				member.setCountry(userdetails.getCountry()); 
+				logger.info("----Country Name ----->"+member.getCountry()); 
 				refer1Update(member); 
 				logger.info("------------[DAO] Successfully Called UpdateMember -------------"); 
 	
@@ -1670,15 +1670,18 @@ public class GglDaoImpl implements GglDao {
 				}else if(userdetails.getAcctType().equalsIgnoreCase("platinum")){
 					member.setTriptype("Master Franchise");
 				}
-				
-				Email.saveEmailReferMember1(member,newCodeFinal);
-				if(member.getEmailID2() != null){
-					Email.saveEmailReferMember2(member,newCodeFinal);
-				}
-				if(member.getEmailID3() != null){
-					Email.saveEmailReferMember3(member,newCodeFinal);
-				}
-				
+				logger.info("Member Country ------------>"+userdetails.getCountry());
+				if(userdetails.getCountry().equalsIgnoreCase("Indonesia")){
+					logger.info("----------- No Commission and Overridding for Indonesia Customer ----------");
+				}else{ 
+					Email.saveEmailReferMember1(member,newCodeFinal);
+					if(member.getEmailID2() != null){
+						Email.saveEmailReferMember2(member,newCodeFinal);
+					}
+					if(member.getEmailID3() != null){
+						Email.saveEmailReferMember3(member,newCodeFinal);
+					}
+				}				
 			}
 			if(requestType.equalsIgnoreCase("Reject")) {
 				UserDetail userdetails = entityManager.find(UserDetail.class, userLoginPrimaryKey);
@@ -1948,7 +1951,7 @@ public class GglDaoImpl implements GglDao {
 					totalOverriding +=  memberResult.getCommOverrDetails().get(i).getOverridingAmt();
 					logger.info("Total Overriding ------>"+totalOverriding); 
 					ggl.setTotalOverriding(totalOverriding);
-					
+					ggl.setCountry(memberResult.getCommOverrDetails().get(i).getCountry()); 
 					ggl.setMemberOvrriding(memberResult.getCommOverrDetails().get(i).getOverridingAmt());
 					ggl.setMemberCommition(memberResult.getCommOverrDetails().get(i).getCommissionAmt());
 					ggl.setCreated_date(memberResult.getCommOverrDetails().get(i).getCreated_date());
@@ -2216,7 +2219,6 @@ public class GglDaoImpl implements GglDao {
 		}catch(Exception e){
 			member.setStatus("failure");
 			logger.info("Exception -->"+e.getMessage());
-						logger.error("Exception -->"+e.getMessage());
 		}
 		finally{
 			

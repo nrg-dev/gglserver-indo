@@ -1300,34 +1300,34 @@ public static void adminwithdrawalertEmail(Member member){
 			}
 
 			public static void websiteFeedBackMail(Member member) {
-					logger.info("Name ----->"+member.getFirstName());
-					logger.info("Email ----->"+member.getEmailID());
-					logger.info("Subject ---->"+member.getAddress());
-					logger.info("FeedBack Message ---->"+member.getDescription()); 
-					String websiteMail = "<html> <body lang=EN-US link=\"#0563C1\" vlink=\"#954F72\" style='tab-interval:.5in'><div class=Section1> <p class=MsoNoSpacing align=center style='text-align:center'><b" 
-							+ "style='mso-bidi-font-weight:normal;color:blue;'><u><span style='font-size:26.0pt'>GGL WEBSITE FEEDBACK MAIL</span></u></b><b style='mso-bidi-font-weight:normal'><u><span "
-							+ "style='font-size:26.0pt;mso-fareast-font-family:\"Times New Roman\";mso-fareast-theme-font:"
-							+ "minor-fareast;mso-fareast-language:ZH-CN'></span></u></b></p> <p class=MsoNoSpacing style='text-align:justify;text-justify:inter-ideograph'><o:p>&nbsp;</o:p></p>"
-							+ "<p class=MsoNoSpacing style='text-align:justify;text-justify:inter-ideograph'><b style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt'>Dear GGL Admin,</span></b></p>"
-							+ "<p class=MsoNoSpacing style='text-align:justify;text-justify:inter-ideograph'><b style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt'></span></b></p>"
-							
-							+ "<p class=MsoNormal style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;line-height:115%;mso-highlight:yellow'> "+member.getDescription()+" </span></p>"
-							
-							+ "<br/><br/> "
-							
-							+"<p class=MsoNormal style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;line-height:115%'>Thanks,</span></p>"
-							+"<p class=MsoNormal style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;line-height:115%'> "+ member.getFirstName() +" </span>"
-							+"<p class=MsoNormal style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;line-height:115%'> "+ member.getEmailID() +" </span>"
-									
-							+ "</div> </body> </html>";
-					try {					
-						logger.info("Calling Email Service -------------");
-						PushEmail.sendMail("globalgains49@gmail.com",member.getAddress(),websiteMail);
-						//PushEmail.sendMail("shahayajoseny@gmail.com",member.getAddress(),websiteMail);
-						logger.info("Successfully  Email Called Service------------");								
-					}catch(Exception e){
-						logger.error("Exception -->"+e.getMessage());
-					}
-				}
+				logger.info("Name ----->"+member.getFirstName());
+				logger.info("Email ----->"+member.getEmailID());
+				logger.info("Subject ---->"+member.getAddress());
+				logger.info("FeedBack Message ---->"+member.getDescription()); 
+				String websiteMail = "<html> <body lang=EN-US link=\"#0563C1\" vlink=\"#954F72\" style='tab-interval:.5in'><div class=Section1> <p class=MsoNoSpacing align=center style='text-align:center'><b" 
+						+ "style='mso-bidi-font-weight:normal;color:blue;'><u><span style='font-size:26.0pt'>GGL WEBSITE FEEDBACK MAIL</span></u></b><b style='mso-bidi-font-weight:normal'><u><span "
+						+ "style='font-size:26.0pt;mso-fareast-font-family:\"Times New Roman\";mso-fareast-theme-font:"
+						+ "minor-fareast;mso-fareast-language:ZH-CN'></span></u></b></p> <p class=MsoNoSpacing style='text-align:justify;text-justify:inter-ideograph'><o:p>&nbsp;</o:p></p>"
+						+ "<p class=MsoNoSpacing style='text-align:justify;text-justify:inter-ideograph'><b style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt'>Dear GGL Admin,</span></b></p>"
+						+ "<p class=MsoNoSpacing style='text-align:justify;text-justify:inter-ideograph'><b style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt'></span></b></p>"
 						
+						+ "<p class=MsoNormal style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;line-height:115%;mso-highlight:yellow'> "+member.getDescription()+" </span></p>"
+						
+						+ "<br/><br/> "
+						
+						+"<p class=MsoNormal style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;line-height:115%'>Thanks,</span></p>"
+						+"<p class=MsoNormal style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;line-height:115%'> "+ member.getFirstName() +" </span>"
+						+"<p class=MsoNormal style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;line-height:115%'> "+ member.getEmailID() +" </span>"
+								
+						+ "</div> </body> </html>";
+				try {					
+					logger.info("Calling Email Service -------------");
+					PushEmail.sendMail("globalgains49@gmail.com",member.getAddress(),websiteMail);
+					//PushEmail.sendMail("shahayajoseny@gmail.com",member.getAddress(),websiteMail);
+					logger.info("Successfully  Email Called Service------------");								
+				}catch(Exception e){
+					logger.error("Exception -->"+e.getMessage());
+				}
+			}
+					
 }

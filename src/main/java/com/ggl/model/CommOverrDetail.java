@@ -36,10 +36,11 @@ public class CommOverrDetail implements Serializable {
 	@Column(name="status")
 	private String status;
 	
-	
 	@Column(name="Member_Number")
 	private String Member_Number;
 	
+	@Column(name="country")
+	private String country;
 
 	//bi-directional many-to-one association to MemberId
 	//@ManyToOne(cascade = CascadeType.ALL)
@@ -121,5 +122,14 @@ public class CommOverrDetail implements Serializable {
 	public void setMemberId(MemberId memberId) {
 		this.memberId = memberId;
 	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	
 	
 }

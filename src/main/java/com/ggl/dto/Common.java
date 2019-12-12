@@ -10,6 +10,7 @@ public abstract class Common {
 	double memberCommition;
 	double memberOvrriding;
 	String status;
+	String country;
 	
 	double TotalOverriding;
 	double TotalCommission;
@@ -98,6 +99,12 @@ public abstract class Common {
 	}
 	public void setMemberID2(String memberID2) {
 		this.memberID2 = memberID2;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
 	}
 	
 	

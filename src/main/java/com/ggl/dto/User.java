@@ -14,6 +14,7 @@ public class User extends Common implements Serializable{
 	String otp;
     String accoutType;
     String paymentPath;
+    String country;
 
     
    // @NotBlank(message = "username can't empty!")
@@ -71,10 +72,12 @@ public class User extends Common implements Serializable{
 	public void setPaymentPath(String paymentPath) {
 		this.paymentPath = paymentPath;
 	}
-	
-	
-
-	
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
 	
 
 }
